@@ -1,0 +1,23 @@
+name: data_imputation
+channels:
+  - conda-forge
+dependencies:
+  - jupyter 
+  - matplotlib >= 3.8
+  - openpyxl >= 3.0
+  - pandas >= 2.1
+  - pip = 24.0
+  - pyarrow 
+  - py-xgboost
+  - python >=3.7
+  - scikit-learn = 1.4.2
+  - seaborn
+  - sqlalchemy
+  - statsmodels
+  - yfinance
+  - pmdarima > 2.0
+  - pandas-datareader
+  - pip:
+      - cinemagoer
+      - lxml
+      - pynytimes
