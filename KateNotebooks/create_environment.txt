@@ -1,0 +1,13 @@
+1. Create environment using data_imputation.yml. 
+conda env create --name data_imputation --file=data_imputation.yml
+
+2. Activate the environment (Always do this step when you restart your computer/terminal)
+conda activate data_imputation
+
+3. Install python package ipykernel from anaconda channel
+conda install -c anaconda ipykernel
+
+4. Register the version of Python in your virtual environment
+python -m ipykernel install --user --name=data_imputation
+
+If everything works, you will see data_imputation in the list of available kernels when you open jupyter notebook
