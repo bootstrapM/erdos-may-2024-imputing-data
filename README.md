@@ -50,7 +50,7 @@ The plot below depicts the autocorrelation function across various lag intervals
 
 The above analysis is reflective of the Efficient Market Hypothesis which states that that at any given time, asset prices fully reflect all historical information prior to that time. This implies Random Walk for asset prices -- stock prices follow a random walk, meaning that price changes are random and cannot be predicted with certainity based on historical data or other available information. Given the random walk behaviour the simplest thing to do would be to carry forward the last observation (this goes under the name of LOCF -- Last Observation Carried Forward. This is essentially the idea behind Martingale -- A stochastic process $\{X_1, X_2 \ldots, X_n, X_{n+1}\}$ is said to be a Martingale if $\mathbf{E}\left(X_{n+1} \mid X_1, \ldots, X_n\right)=X_n$). A random walk is an example of a Martingale. 
 
-This method of imputation is presented in the plot below
+The above method of imputation (LOCF) is presented in the plot below
 
 ![alt text](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/HimanshuNotebooks/LOCF.png) 
 
