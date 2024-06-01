@@ -102,7 +102,7 @@ With this method, it is observed that when the linear regression on the daily re
 
 ## Final results:
 
-First we present MSE results of three methods (Rolling Average, Double Exponential Smoothing, and SARIMA) that make predictions based on the `Close` prices time series data alone. 
+First we present MSE results of three methods (Rolling Average, Double Exponential Smoothing, and SARIMA) that make predictions based on the *`Close` prices series alone*. 
 
 - The Rolling Average method
 
@@ -125,7 +125,7 @@ First we present MSE results of three methods (Rolling Average, Double Exponenti
 The errors of these methods were measured relative to linear interpolation using a normalized mean squared error. One key insight that emerged from our analysis was that the best results are achieved by giving equal weight to predictions based on data to the left and right of the missing data. Interestingly, these methods perform similarly to linear interpolation when there is a single missing point, but their performance deteriorates as the number of missing points increases.
 
 
-In the plot below we present the performance of the various models that incorporate additional predictors. The performance is evaluated on the 2023 data only, which we decided to use to have a uniform comparison of our models. On the x-axis is the number of the consecutive missing days. On the y-axis the ratio of the mean squared error of the model to the mean squared error of the linear interpolation. We can see that in most circumstances for this data our models perform worse than linear interpolation. However, we also note that the performance of our models could be better for other years.
+Next, in the plot below we present the performance of the various models that incorporate *additional predictors*. The performance is evaluated on the 2023 data only, which we decided to use to have a uniform comparison of our models. On the x-axis is the number of the consecutive missing days. On the y-axis the ratio of the mean squared error of the model to the mean squared error of the linear interpolation. We can see that in most circumstances for this data our models perform worse than linear interpolation. However, we also note that the performance of our models could be better for other years.
 
 ![alt text](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/PresentationAssets/MSE_ratio_2023data.png)
 
