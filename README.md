@@ -6,16 +6,15 @@ Imputing missing data in stock time series is crucial for maintaining data integ
 
 ## Motivation: 
 The NYSE and NASDAQ average about 252 trading days yearly. What if someone accidentally deleted data from five (or more) trading days? Missing data is often ignored or removed when we analyze data, which could be problematic. One of the problems is that stock returns depend on that "missingness" (S. Bryzgalova, 2022).
-Stakeholders: AAPL Inc., investors, financial companies
 
 
 ## Data:
-AAPL (Apple Inc.) data from January 1, 2023 until December 31, 2023. There are 250 data points because trading market closes on Saturdays, Sundays, and national holidays. We want to predict the Close values.
-A daily return is computed from the adjusted close as: 
-\begin{equation}
-R_t = \frac{P_t-P_{t-1}}{P_{t-1}}
-\end{equation}
-where $P_t$ is the daily return on day $t$, and  is the adjusted close on day .
+AAPL (Apple Inc.) data from January 1, 2023 until December 31, 2023. There are 250 data points because trading market closes on Saturdays, Sundays, and national holidays. We manually deleted the `Close` values for 7 wondows of `[5, 4, 3, 2, 1]` consecutive days. The goal was to impute these "missing" data though various techniques. 
+
+![alt text](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/HimanshuNotebooks/OriginalDataset.png) 
+
+
+We also used 2023 data for `NVDA`, `MSFT`, `TSM`, `META`, `GOOG` stocks for performing cross-sectional analysis using Linear Regression and Vector Auto Correlation. A plot of the stock price series 
 
 
 # Models:
