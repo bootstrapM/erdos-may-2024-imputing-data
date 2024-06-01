@@ -38,11 +38,11 @@ While this looks sufficiently random by eye, better insights can be gained by lo
 | Skewness    | -0.257    |
 | Excess Kurtosis | 1.82|
 
-The ECDF is shown in the plot below (along with the ECDF of the Normal Distribution for which we used the mean and standard deviation given in the table above)
+The ECDF is shown in the plot below (along with the ECDF of the normal distribution for which we used the mean and standard deviation given in the table above)
 
 ![alt text](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/HimanshuNotebooks/ECDF.png) 
 
-Examination of the empirical cumulative distribution function reveals that price fluctuations largely follows a normal distribution across a large spectrum of values. This suggests that stock price movements follow a random walk pattern. There are outliers in this plot which also be seen in the excess Kurtosis (see the table of Summary Statistics above). In general, stock prices data are known to follow a fat tailed distribution rather than a normal distribution. 
+Examination of the empirical cumulative distribution function reveals that price fluctuations largely follows a normal distribution across a large spectrum of values. This suggests that stock price movements follow a random walk pattern. There are outliers in this plot which also be seen in the excess Kurtosis (see the table of summary statistics above). In general, stock prices data are empirically known to follow a fat tailed distribution rather than a normal distribution. 
 
 The plot below depicts the autocorrelation function across various lag intervals. The small autocorrelation values suggests that the price movements have little to no predictable relationship with past price movements.
 
