@@ -129,10 +129,6 @@ Next, in the plot below we present the performance of the various models that in
 
 ![alt text](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/PresentationAssets/MSE_ratio_2023data.png)
 
-### Final word
-
-**Linear interpolation remains a robust choice for both small and large gaps in stock time-series data compared to more sophisticated imputation methods.**
-
 ## Conclusion and Future Directions
 
 - We found that among the various times series models that we tried, linear interpolation is a robust choice for both small and large gaps in data. When there is sufficiently high correlation between price movements of two companies, one may be used to regress over the the other. 
