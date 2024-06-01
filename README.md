@@ -81,9 +81,13 @@ These methods make predictions based on the closing prices alone. They performed
 
 - Cross-Sectional Analysis:
 
-![Correlation in daily percentage return for APPL against NVDA, MSFT, TSM, META, GOOG during 2020-2022](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/PresentationAssets/daily_ret_scatter_plot2020_2022.png)
+| ![Correlation in daily percentage return for APPL against NVDA, MSFT, TSM, META, GOOG during 2020-2022](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/PresentationAssets/daily_ret_scatter_plot2020_2022.png) |
+|:--:| 
+|*Correlation in daily percentage return for APPL against NVDA, MSFT, TSM, META, GOOG during 2020-2022*|
 
-![Correlation in daily return for APPL against NVDA, MSFT, TSM, META, GOOG in 2023](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/PresentationAssets/daily_ret_scatter_plot_2023.png)
+| ![Correlation in daily return for APPL against NVDA, MSFT, TSM, META, GOOG in 2023](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/PresentationAssets/daily_ret_scatter_plot_2023.png)|
+|:--:| 
+|*Correlation in daily return for APPL against NVDA, MSFT, TSM, META, GOOG in 2023*|
 
 After examining cross-correlation between Apple stocks and other tech companies stocks time series (shown in the correlation plots above), we observed that it might be reasonable to use the movement of the stock prices of other companies to impute the missing Apple stocks data. One such method of incorporating the stocks prices is by regressing daily returns of Apple stock on daily returns of other companies, and then using prediction of the daily returns for imputing missing values. The daily return is defined as follows $$r_t = \frac{P_t- P_{t-1}}{P_{t-1}}$$ where $P_t$ is the price of the stock at time $t$.
 
@@ -99,13 +103,19 @@ First we present the results of three methods that make predictions based on the
 
 - The Rolling Average method uses the average of a fixed number of points to the left and right of the missing values to make a prediction
 
-![Results from Rolling Average method](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/PresentationAssets/rolling_average.png)
+|![Results from Rolling Average method](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/PresentationAssets/rolling_average.png)|
+|:--:| 
+|*Results from Rolling Average method*|
   
 - Double Exponential Smoothing considers the trends in the data whereas SARIMA incorporates seasonal patterns, trends, and autoregressive components to estimate missing values.
 
-![Results from Double Exponential Smoothing](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/PresentationAssets/ARIMA.png)
+|![Results from Double Exponential Smoothing](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/PresentationAssets/ARIMA.png)|
+|:--:| 
+|*Results from Double Exponential Smoothing*|
 
-![Results from SARIMA](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/PresentationAssets/double_exponential_smoothing.png)
+|![Results from SARIMA](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/PresentationAssets/double_exponential_smoothing.png)|
+|:--:| 
+|*Results from SARIMA*|
   
 The errors of these methods were measured relative to linear interpolation using a normalized mean squared error. One key insight that emerged from our analysis was that the best results are achieved by giving equal weight to predictions based on data to the left and right of the missing data. Interestingly, these methods perform similarly to linear interpolation when there is a single missing point, but their performance deteriorates as the number of missing points increases.
 
