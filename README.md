@@ -88,16 +88,6 @@ With this method, it is observed that when the linear regression on the daily re
 Idea of Granger Causality: If X GCs Y, we can use X to predict Y. For example, if we want to predict stock for Apple, and we find that Google stock Granger Causes Apple stock, using Google stock will improve Apple prediction. Therefore, we ran GC tests for 7 different companies: Apple, Google, Microsoft, NVIDIA, Amazon, Meta, TSMC. We found that the NVIDIA’s close difference Granger Causes Apple’s close difference, thus we include NVIDIA in our VAR model. 
 
 
-## Other advanced techniques
-
-We also implimented some advanced techniques that included:
-
-- Kalman Filtering: An algorithm used in time series analysis to estimate the state of a dynamic system from a series of noisy measurements. It operates recursively by updating it's estimates of the current state based on both the previous state and new measurements, accounting for uncertainties in both. The two main steps in the algorithm are prediction and update. In the prediction step it forecasts the next hidden state based on a linear model. In the update step it adjusts this prediction using the latest observed data.
-
-![alt text](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/HimanshuNotebooks/KalmanFilter.png)
-
-While it looks this algorithm perofrmed significantly worse than other techniques mentioned above we haven't really explored the full potential 
-
 ## Final results:
 
 First we present the results of three methods that make predictions based on the `close` prices time series data alone. 
@@ -122,3 +112,22 @@ In the plot below we present the performance of the various models that incorpor
 
 
 Linear interpolation remains a robust choice for both small and large gaps in stock time-series data compared to more complicated interpolation methods.
+
+## Conclusion and Future Directions
+
+- We found that among the various times series models that we tried, linear interpolation is a robust choice for both small and large gaps in data. When there is sufficiently high correlation between price movements of two companies, one may be used to regress over the the other. 
+
+
+- In a future work we would like to incorporate other predictors that include Trading Volume, Derived Indicators (such as moving averages, relative strength index (RSI), and Bollinger Bands derived from historical price and volume data), Dividends and Corporate Actions (such as stock splits, buybacks), Industry Trends (Sector-specific trends having relatively stong cross-correlation), Market Indices (S&P 500 or Dow Jones Industrial Average ) and Interest Rates (Changes in central bank policies and interest rates, which can affect borrowing costs and investment returns). 
+
+- We would like to systematically explore under what conditions the methods that we evaluated used outperform linear interpolation.
+ 
+- We also began exploring advanced techniques like State Space Models (Kalman Filter, Kalman Smoother) and Neural Network (Neural ODEs, Generative Adversarial Networks) based approaches whose applications go beyond the present context. A preliminary implementation of the Kalman filtering technique is presented below.
+
+### Other advanced techniques
+
+Kalman Filtering is an algorithm used in time series analysis to estimate the state of a dynamic system from a series of noisy measurements. It operates recursively by updating it's estimates of the current state based on both the previous state and new measurements, accounting for uncertainties in both. The two main steps in the algorithm are prediction and update. In the prediction step it forecasts the next hidden state based on a linear model. In the update step it adjusts this prediction using the latest observed data.
+
+![alt text](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/HimanshuNotebooks/KalmanFilter.png)
+
+While it looks this algorithm perofrmed significantly worse than other techniques mentioned above we haven't explored the full potential and leave it to a future work.
