@@ -7,7 +7,7 @@ Imputing missing data in financial time series is crucial for maintaining data i
 ## Motivation: 
 Stock exchanges such as NYSE and NASDAQ average about 252 [trading days](https://en.wikipedia.org/wiki/Trading_day) a year (trading market remins closed on weekends and national holidays). Such markets have trading hours and non-trading hours nationally and internationally. Typically, trading begins at 9:30 AM and ends at 4:00 PM. The remaining hours is what we might call a period of missing data during which the `Close` price on the $i$'th day evolves to (usually different) `Open` price on $(i+1)$ 'th day as consequence of, for instance, developments in financial markets worldwide. Analyzing imputation for such time series could therefore yeild insight on correlations in international market and the relevent models and market predictors to use for the more practical problem of making forecast in price movements. Another situation of missing data that one could speculate is where an external shock (in the form of market news or geopolitical events) leads to huge jumps in the prices which might temporarily halt trading.
 
-Though missing data in the daily stock prices is rare, in this project, we analyse a toy problem where we delete a few data points in the stock price time series by hand and attmept to impute it through various methods. The goal is to see which methods and what market indicators work best for such a dataset.
+Though missing data in the daily stock prices is rare, in this project, we analyse a toy problem where we delete a few data points in the stock price time series by hand and attempt to impute it through various methods. The goal is to see which methods and what market indicators work best for such a dataset.
 
 
 ## Dataset:
