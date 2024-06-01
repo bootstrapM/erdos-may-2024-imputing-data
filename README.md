@@ -68,6 +68,7 @@ The main models that we tried were the following:
 - Double Exponential Smoothing: A forecasting method that accounts for both the level and the trend in the data by applying exponential smoothing twice, once to the level and once to the trend.
 - SARIMA: Incorporates seasonal patterns, trends, and autoregressive components. Can use both forward and backward forecasting for imputing missing data in the middle of the time series.
 - Linear Regression between price movement of different companies' stocks
+- Granger Causality: This is a statistical hypothesis test used to determine whether one time series can predict another. In other words, if the past values of one time series `X` provide significant information about the future values of another variable `Y`  (beyond what is contained in the past values of YY alone), then `X` is said to <em>Granger-cause</em> `Y`. While this method is closely related to `cross-correlation`, is it more sophisticated since it provides a test for predictive causality, an information that can very useful for satatistical modeling. 
 - Vector Auto Regression: A statistical model used to capture the linear interdependencies among multiple time series by allowing each variable to be a linear function of past values of itself and the past values of all other variables in the system.
 
 
@@ -96,8 +97,11 @@ After examining cross-correlation between Apple stocks and other tech companies 
 With this method, it is observed that when the linear regression on the daily returns has a good fit, the predictions of the missing stock values have lower error.
 
 - Granger Causality:
-Idea of Granger Causality: If X GCs Y, we can use X to predict Y. For example, if we want to predict stock for Apple, and we find that Google stock Granger Causes Apple stock, using Google stock will improve Apple prediction. Therefore, we ran GC tests for 7 different companies: Apple, Google, Microsoft, NVIDIA, Amazon, Meta, TSMC. We found that the NVIDIA’s close difference Granger Causes Apple’s close difference, thus we include NVIDIA in our VAR model. 
+Idea of Granger Causality: If X GCs Y, we can use X to predict Y. For example, if we want to predict stock for Apple, and we find that Google stock Granger Causes Apple stock, using Google stock will improve Apple prediction. Therefore, we ran GC tests for 7 different companies: Apple, Google, Microsoft, NVIDIA, Amazon, Meta, TSMC. We found that the NVIDIA’s `Close difference` values Granger Causes Apple’s `Close difference` values. This information can thus be used to include NVIDIA in a statistical time series model such as Vector Auto Correlation (which is what we used below).
+
 ![alt_text](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/PresentationAssets/GC_matrix.JPG)
+
+
 
 ## Final results:
 
@@ -120,7 +124,6 @@ First we present the results of three methods that make predictions based on the
 |*Results from SARIMA*|
   
 The errors of these methods were measured relative to linear interpolation using a normalized mean squared error. One key insight that emerged from our analysis was that the best results are achieved by giving equal weight to predictions based on data to the left and right of the missing data. Interestingly, these methods perform similarly to linear interpolation when there is a single missing point, but their performance deteriorates as the number of missing points increases.
-
 
 
 In the plot below we present the performance of the various models that incorporate additional predictors. The performance is evaluated on the 2023 data only, which we decided to use to have a uniform comparison of our models. On the x-axis is the number of the consecutive missing days. On the y-axis the ratio of the mean squared error of the model to the mean squared error of the linear interpolation. We can see that in most circumstances for this data our models perform worse than linear interpolation. However, we also note that the performance of our models could be better for other years.
