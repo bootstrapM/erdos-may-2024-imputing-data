@@ -13,7 +13,7 @@ Though missing data in the daily stock prices is rare, in this project, we analy
 ## Dataset:
 AAPL (Apple Inc.) data from January 1, 2023 until December 31, 2023. There are 250 data points because trading market closes on weekends and national holidays. We manually deleted the `Close` values for 7 wondows of `[5, 4, 3, 2, 1]` consecutive days. The goal is to impute these "missing" data though various techniques. 
 
-![alt text](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/HimanshuNotebooks/OriginalDataset.png) 
+![Missing Close prices of Apple stock time series (7 windows with 5 consecutive missing points in each)](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/HimanshuNotebooks/OriginalDataset.png) 
 
 We also used 2023 data for `NVDA`, `MSFT`, `TSM`, `META`, `GOOG` stocks for performing cross-sectional analysis using Linear Regression and Vector Auto Correlation. A plot of the stock price series 
 
@@ -75,7 +75,14 @@ These methods make predictions based on the closing prices alone. They performed
 ![alt text](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/PresentationAssets/methods_illustration.jpg)
 
 - Cross-Sectional Analysis:
-After examining cross-correlation between Apple stocks and other tech companies stocks time series, we observed that it might be reasonable to use the movement of the stock prices of other companies to impute the missing Apple stocks data. One such method of incorporating the stocks prices is by regressing daily returns of Apple stock on daily returns of other companies, and then using prediction of the daily returns for imputing missing values. With this method, it is observed that when the linear regression on the daily returns has a good fit, the predictions of the missing stock values have lower error.
+
+![Correlation in daily percentage return for APPL against NVDA, MSFT, TSM, META, GOOG during 2020-2022](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/PresentationAssets/daily_ret_scatter_plot2020_2022.png)
+
+![Correlation in daily return for APPL against NVDA, MSFT, TSM, META, GOOG in 2023](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/PresentationAssets/daily_ret_scatter_plot_2023.png)
+
+After examining cross-correlation between Apple stocks and other tech companies stocks time series (shown in the correlation plots above), we observed that it might be reasonable to use the movement of the stock prices of other companies to impute the missing Apple stocks data. One such method of incorporating the stocks prices is by regressing daily returns of Apple stock on daily returns of other companies, and then using prediction of the daily returns for imputing missing values. The daily return is defined as follows $$r_t = \frac{P_t- P_{t-1}}{P_{t-1}}$$ where $P_t$ is the price of the stock at time $t$.
+
+With this method, it is observed that when the linear regression on the daily returns has a good fit, the predictions of the missing stock values have lower error.
 
 - Granger Causality:
 Idea of Granger Causality: If X GCs Y, we can use X to predict Y. For example, if we want to predict stock for Apple, and we find that Google stock Granger Causes Apple stock, using Google stock will improve Apple prediction. Therefore, we ran GC tests for 7 different companies: Apple, Google, Microsoft, NVIDIA, Amazon, Meta, TSMC. We found that the NVIDIA’s close difference Granger Causes Apple’s close difference, thus we include NVIDIA in our VAR model. 
@@ -89,21 +96,29 @@ We also implimented some advanced techniques that included:
 
 ![alt text](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/HimanshuNotebooks/KalmanFilter.png)
 
+While it looks this algorithm perofrmed significantly worse than other techniques mentioned above we haven't really explored the full potential 
 
 ## Final results:
 
 First we present the results of three methods that make predictions based on the `close` prices time series data alone. 
 
 - The Rolling Average method uses the average of a fixed number of points to the left and right of the missing values to make a prediction
+
+![Results from Rolling Average method](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/PresentationAssets/rolling_average.png)
   
 - Double Exponential Smoothing considers the trends in the data whereas SARIMA incorporates seasonal patterns, trends, and autoregressive components to estimate missing values.
+
+![Results from Double Exponential Smoothing](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/PresentationAssets/ARIMA.png)
+
+![Results from SARIMA](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/PresentationAssets/double_exponential_smoothing.png)
   
 The errors of these methods were measured relative to linear interpolation using a normalized mean squared error. One key insight that emerged from our analysis was that the best results are achieved by giving equal weight to predictions based on data to the left and right of the missing data. Interestingly, these methods perform similarly to linear interpolation when there is a single missing point, but their performance deteriorates as the number of missing points increases.
 
 
 
-
 In the plot below we present the performance of the various models that incorporate additional predictors. The performance is evaluated on the 2023 data only, which we decided to use to have a uniform comparison of our models. On the x-axis is the number of the consecutive missing days. On the y-axis the ratio of the mean squared error of the model to the mean squared error of the linear interpolation. We can see that in most circumstances for this data our models perform worse than linear interpolation. However, we also note that the performance of our models could be better for other years.
+
+![alt text](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/PresentationAssets/MSE_ratio_2023data.png)
 
 
 Linear interpolation remains a robust choice for both small and large gaps in stock time-series data compared to more complicated interpolation methods.
