@@ -25,7 +25,7 @@ We also used 2023 data for `NVDA`, `MSFT`, `TSM`, `META`, `GOOG` stocks for perf
 ![alt text](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/HimanshuNotebooks/multiple_prices.png) 
 
 ## Exploratory Data Analysis
-He we give an exploratory data analysis of the `APPL` dataset. The plot below presents depicts the closing prices differences between consecutive trading days
+He we give an exploratory data analysis of the `APPL` dataset. The plot below depicts the closing prices differences between consecutive trading days
 
 ![alt text](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/HimanshuNotebooks/PriceDifferences.png) 
 
@@ -38,7 +38,7 @@ While this looks sufficiently random by eye, better insights can be gained by lo
 | Skewness    | -0.257    |
 | Excess Kurtosis | 1.82|
 
-The ECDF is shown in the plot below (along with the ECDF of the Normal Distribution with mean and standard deviation given in the table above)
+The ECDF is shown in the plot below (along with the ECDF of the Normal Distribution for which we used the mean and standard deviation given in the table above)
 
 ![alt text](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/HimanshuNotebooks/ECDF.png) 
 
