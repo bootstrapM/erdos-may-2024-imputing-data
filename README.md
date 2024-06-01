@@ -60,14 +60,14 @@ In what follows we explore regression and time series models in search of other 
 
 ## List of models that we tried:
 
-The main models that we tried were the following (we also give a brief description of the model):
+The main models that we tried were the following (we also give a brief description of some of the models alongside):
 
 - Baseline model: Linear Interpolation
 - k-Nearest Neighbour: Weighted 2-Nearest Neighbors Regression with date as a feature. We want to generalize this idea by using more features, such as, open stock price and volume.
 - Rolling average: Uses the average of a fixed number of points to the left and right of the missing values to make a prediction 
 - Double Exponential Smoothing: A forecasting method that accounts for both the level and the trend in the data by applying exponential smoothing twice, once to the level and once to the trend.
 - SARIMA: Incorporates seasonal patterns, trends, and autoregressive components. Can use both forward and backward forecasting for imputing missing data in the middle of the time series.
-- Linear Regression between price movement of different companies' stocks
+- Linear Regression: Useful for regressing price movement of different companies' stocks that have a strong correlation. 
 - Granger Causality: This is a statistical hypothesis test used to determine whether one time series can predict another. In other words, if the past values of one time series `X` provide significant information about the future values of another variable `Y`  (beyond what is contained in the past values of YY alone), then `X` is said to <em>Granger-cause</em> `Y`. While this method is closely related to `cross-correlation`, is it more sophisticated since it provides a test for predictive causality, an information that can very useful for satatistical modeling. 
 - Vector Auto Regression: A statistical model used to capture the linear interdependencies among multiple time series by allowing each variable to be a linear function of past values of itself and the past values of all other variables in the system.
 
