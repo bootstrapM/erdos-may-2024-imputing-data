@@ -74,11 +74,9 @@ The main models that we tried were the following (we also give a brief descripti
 
 ### Summary of implimentation
 
-- Linear Regression:
-We took linear interpolation as our baseline model. This model gives an MSE of 3.475 (for the case of 5 consecutive missing point) thereby outperforming LOCF. 
+- Linear Regression: We took linear interpolation as our baseline model. This model gives an MSE of 3.475 (for the case of 5 consecutive missing point) thereby outperforming LOCF. 
 
-- Rolling Average, Double Exponential Smoothing, and SARIMA:
-These methods make predictions based on the closing prices alone. They performed comparably to linear interpolation for a single missing point but worsened as the number of missing data points increased. The optimal performance occurs when predictions based on data to the left and right of the missing points are weighted equally. An illustration of these methods is given below 
+- Rolling Average, Double Exponential Smoothing, and SARIMA: These methods make predictions based on the closing prices alone. They performed comparably to linear interpolation for a single missing point but worsened as the number of missing data points increased. The optimal performance occurs when predictions based on data to the left and right of the missing points are weighted equally. An illustration of these methods is given below 
 
 ![alt text](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/PresentationAssets/methods_illustration.jpg)
 
@@ -104,20 +102,22 @@ With this method, it is observed that when the linear regression on the daily re
 
 ## Final results:
 
-First we present the results of three methods that make predictions based on the `close` prices time series data alone. 
+First we present MSE results of three methods (Rolling Average, Double Exponential Smoothing, and SARIMA) that make predictions based on the `Close` prices time series data alone. 
 
-- The Rolling Average method uses the average of a fixed number of points to the left and right of the missing values to make a prediction
+- The Rolling Average method
 
 |![Results from Rolling Average method](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/PresentationAssets/rolling_average.png)|
 |:--:| 
 |*Results from Rolling Average method*|
   
-- Double Exponential Smoothing considers the trends in the data whereas SARIMA incorporates seasonal patterns, trends, and autoregressive components to estimate missing values.
+- Double Exponential Smoothing
 
 |![Results from Double Exponential Smoothing](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/PresentationAssets/ARIMA.png)|
 |:--:| 
 |*Results from Double Exponential Smoothing*|
 
+- SARIMA
+  
 |![Results from SARIMA](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/PresentationAssets/double_exponential_smoothing.png)|
 |:--:| 
 |*Results from SARIMA*|
