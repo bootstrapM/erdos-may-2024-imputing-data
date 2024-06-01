@@ -131,19 +131,41 @@ Next, in the plot below we present the performance of the various models that in
 
 ## Conclusion and Future Directions
 
-- We found that among the various times series models that we tried, linear interpolation is a robust choice for both small and large gaps in data. When there is sufficiently high correlation between price movements of two companies, one may be used to regress over the the other. 
+- We found that among the various times series models that we tried, linear interpolation is a robust choice for imputing both small and large gaps in data. When there is sufficiently high correlation between price movements of two companies, one may be used to regress over the the other. 
 
 
 - In a future work we would like to incorporate other predictors that include Trading Volume, Derived Indicators (such as moving averages, relative strength index (RSI), and Bollinger Bands derived from historical price and volume data), Dividends and Corporate Actions (such as stock splits, buybacks), Industry Trends (Sector-specific trends having relatively stong cross-correlation), Market Indices (S&P 500 or Dow Jones Industrial Average ) and Interest Rates (Changes in central bank policies and interest rates, which can affect borrowing costs and investment returns). 
 
-- We would like to systematically explore under what conditions the methods that we evaluated used outperform linear interpolation.
+- We would like to systematically explore under what conditions the methods that we used outperform linear interpolation.
  
 - We also began exploring advanced techniques like State Space Models (Kalman Filter, Kalman Smoother) and Neural Network (Neural ODEs, Generative Adversarial Networks) based approaches whose applications go beyond the present context. A preliminary implementation of the Kalman filtering technique is presented below.
 
 ### Other advanced techniques
 
-Kalman Filtering is an algorithm used in time series analysis to estimate the state of a dynamic system from a series of noisy measurements. It operates recursively by updating it's estimates of the current state based on both the previous state and new measurements, accounting for uncertainties in both. The two main steps in the algorithm are prediction and update. In the prediction step it forecasts the next hidden state based on a linear model. In the update step it adjusts this prediction using the latest observed data.
+Kalman Filtering is an algorithm used in time series analysis to estimate the state of a dynamic system from a series of noisy measurements. It operates recursively by updating it's estimates of the current state based on both the previous state and new measurements, accounting for uncertainties in both. The two main steps in the algorithm are prediction and update. In the prediction step it forecasts the next hidden state based on a linear model. In the update step it adjusts this prediction using the latest observed data. Below we present an attempt to use Kalman filter for imputing
 
 ![alt text](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/HimanshuNotebooks/KalmanFilter.png)
 
-While it looks this algorithm perofrmed significantly worse than other techniques mentioned above we haven't explored the full potential and leave it to a future work.
+While it looks this algorithm perofrmed significantly worse than other techniques mentioned above we haven't explored the full potential of the method and leave a more treatment it to future work.
+
+## Code Description
+
+Cleaned Jupyter Notebooks used for the results shown above can be found in this [folder](https://github.com/bootstrapM/erdos-may-2024-imputing-data/tree/main/Models). It consists of the following notebooks
+
+- [Using_closing_price_alone.ipynb](): This notebook compares the accuracy of rolling average, double exponential smoothing and ARIMA interpolation methods to that of the baseline (linear interpolation).
+- [Stationary_test.ipynb](): We need to check for stationary before applying the Granger Causality test.
+- [Granger_Causality_test.ipynb](): Apply Granger Causality Test. Companies that Granger Causes Apple’s close differencing will be implemented in VAR. 
+- [VAR.ipynb](): VAR model with the lag found from Granger Causality test.
+- [regression_on_daily_return.ipynb](): Regression analysis of the daily return values of the other tech companies is used to predict Apple stock closing values.
+- [summary_of_models.ipynb](): Table with relative MSE data of all models
+
+The [folder]() contains figures pertaining to EDA. It consists of the following:
+
+- [eda_for_regression](): basic data analysis for choosing models and features for regression on other companies’ stock movement
+
+
+
+
+
+
+
