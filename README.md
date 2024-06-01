@@ -12,9 +12,9 @@ Stakeholders: AAPL Inc., investors, financial companies
 ## Data:
 AAPL (Apple Inc.) data from January 1, 2023 until December 31, 2023. There are 250 data points because trading market closes on Saturdays, Sundays, and national holidays. We want to predict the Close values.
 A daily return is computed from the adjusted close as: 
-$$
+\begin{equation}
 R_t = \frac{P_t-P_{t-1}}{P_{t-1}}
-$$
+\end{equation}
 where $P_t$ is the daily return on day $t$, and  is the adjusted close on day .
 
 
