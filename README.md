@@ -11,7 +11,10 @@ Though missing data in the daily stock prices is rare, in this project, we analy
 
 
 ## Dataset:
-We use `AAPL` (Apple Inc.) stock price data from January 1, 2023 until December 31, 2023. There are 250 data points. We manually deleted the `Close` values for 7 windows of `[5, 4, 3, 2, 1]` consecutive days. The goal is to impute these "missing" data though various techniques. 
+We use `AAPL` (Apple Inc.) stock price data from January 1, 2023 until December 31, 2023. There are 250 data points. A sample is shown below.
+![](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/HimanshuNotebooks/dataframe.png)
+
+We manually deleted the `Close` values for 7 windows of `[5, 4, 3, 2, 1]` consecutive days. The goal is to impute these "missing" data though various techniques. 
 
 | ![Missing Close prices of Apple stock time series (7 windows with 5 consecutive missing points in each)](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/HimanshuNotebooks/OriginalDataset.png) |
 |:--:| 
