@@ -25,7 +25,7 @@ We also used 2023 data for `NVDA`, `MSFT`, `TSM`, `META`, `GOOG` stocks for perf
 ![alt text](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/HimanshuNotebooks/multiple_prices.png) 
 
 ## Exploratory Data Analysis
-He we give an exploratory data analysis (EDA) of our dataset. The plot below presents depicts the closing prices differences between consecutive trading days
+He we give an exploratory data analysis of the `APPL` dataset. The plot below presents depicts the closing prices differences between consecutive trading days
 
 ![alt text](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/HimanshuNotebooks/PriceDifferences.png) 
 
