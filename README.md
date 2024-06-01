@@ -96,8 +96,7 @@ After examining cross-correlation between Apple stocks and other tech companies 
 
 With this method, it is observed that when the linear regression on the daily returns has a good fit, the predictions of the missing stock values have lower error.
 
-- Granger Causality:
-Idea of Granger Causality: If `X` <em>Granger causes<\em> `Y`, we can use X to predict Y. For example, if we want to predict stock for Apple, and we find that Google stock Granger Causes Apple stock, using Google stock will improve Apple prediction. Therefore, we ran GC tests for 7 different companies: Apple, Google, Microsoft, NVIDIA, Amazon, Meta, TSMC. We found that the NVIDIA’s `Close difference` values Granger Causes Apple’s `Close difference` values. This information can thus be used to include NVIDIA in a statistical time series model such as Vector Auto Correlation (which is what we used below).
+- Granger Causality (GC): As explained above, the idea behind Granger causality is that if `X` <em>Granger causes</em> `Y`, we can use `X` to predict `Y`. For example, if we want to predict stock for Apple, and we find that Google stock <em>Granger causes</em> Apple stock. Using Google stock in the modeling procedure will improve the prediction for Apple price imputation. We ran GC tests for 7 different companies: Apple, Google, Microsoft, NVIDIA, Amazon, Meta, TSMC. We found that the NVIDIA’s `Close difference` values Granger Causes Apple’s `Close difference` values. This information can thus be used to include NVIDIA in a statistical time series model such as Vector Auto Correlation (which is what we used below).
 
 ![alt_text](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/PresentationAssets/GC_matrix.JPG)
 
