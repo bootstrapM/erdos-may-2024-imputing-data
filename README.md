@@ -60,7 +60,7 @@ In what follows we explore regression and time series models in search of other 
 
 ## List of models that we tried:
 
-The main models that we tried were the following:
+The main models that we tried were the following (we also give a brief description of the model):
 
 - Baseline model: Linear Interpolation
 - k-Nearest Neighbour: Weighted 2-Nearest Neighbors Regression with date as a feature. We want to generalize this idea by using more features, such as, open stock price and volume.
