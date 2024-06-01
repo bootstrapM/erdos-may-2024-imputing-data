@@ -92,7 +92,7 @@ We also implimented some advanced techniques that included:
 - Neural network:
 Using a multi-layered perceptron, we trained the model on the data with the data missing and tested it against the original full data set. We found that the small size of the training dataset led to overfitting of the model.
 
-![alt text]()
+![alt text](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/HimanshuNotebooks/mlp.png)
 
 
 ## Final results:
