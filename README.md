@@ -54,7 +54,9 @@ The above method of imputation (LOCF) is presented in the plot below
 
 ![alt text](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/HimanshuNotebooks/LOCF.png) 
 
-When compared with the true data, we find a mean squared error of LOCF is 11.38 in case where we have seven windows of 5 consequetive missing values in each window. In the following we explore regression and time series models that have better performance. 
+When compared with the true data, we find a mean squared error of 11.38 (for the case where we have seven windows of 5 consequetive missing values in each window). 
+
+In what follows we explore regression and time series models in search of other better performing frameworks.
 
 ## List of models that we tried:
 
