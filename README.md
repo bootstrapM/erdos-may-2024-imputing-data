@@ -20,7 +20,7 @@ We manually deleted the `Close` values for 7 windows of `[5, 4, 3, 2, 1]` consec
 |:--:| 
 | *Missing Close prices of Apple stock time series (7 windows with 5 consecutive missing points in each)* |
 
-We also used 2023 data for `NVDA`, `MSFT`, `TSM`, `META`, `GOOG` stocks for performing cross-sectional analysis using Linear Regression and Vector Auto Correlation. A plot of the stock price series 
+We also used 2023 data for `NVDA`, `MSFT`, `TSM`, `META`, `GOOG` stocks for performing cross-sectional analysis using Linear Regression and Vector Auto Correlation. A plot of the stock price series is presented below
 
 ![alt text](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/HimanshuNotebooks/multiple_prices.png) 
 
