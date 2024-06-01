@@ -100,7 +100,7 @@ With this method, it is observed that when the linear regression on the daily re
 
 
 
-## Final results:
+## Final results
 
 First we present MSE results of three methods (Rolling Average, Double Exponential Smoothing, and SARIMA) that make predictions based on the **`Close` prices series alone**. 
 
@@ -128,6 +128,8 @@ The errors of these methods were measured relative to linear interpolation using
 Next, in the plot below we present the performance of the various models that incorporate **additional predictors**. The performance is evaluated on the 2023 data only and provides a uniform comparison of our models. On the x-axis is the number of the consecutive missing days. On the y-axis the ratio of the mean squared error of the model to the mean squared error of the linear interpolation. We can see that in all circumstances for this data our models perform worse than linear interpolation though we point out that the performance for linear regression was better than linear interpolation in some years (see the [notebook]() **Evgeniya add link to your notebook here** )
 
 ![alt text](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/PresentationAssets/MSE_ratio_2023data.png)
+
+### Final word
 
 **Linear interpolation remains a robust choice for both small and large gaps in stock time-series data compared to more sophisticated imputation methods.**
 
