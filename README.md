@@ -43,25 +43,59 @@ The plot below depicts the autocorrelation function across various lag intervals
 
 ![alt text](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/HimanshuNotebooks/ReturnSeriesAutocorrelation.png) 
 
-This analysis is reflective of the Efficient Market Hypothesis which states that that at any given time, asset prices fully reflect all historical information prior to that time. This implies Random Walk for asset prices -- stock prices follow a random walk, meaning that price changes are random and cannot be predicted with certainity based on historical data or other available information. Given the random walk behaviour the simplest thing to do would be to carry forward the last observation (this is the idea behind Martingale -- A stochastic process $\{X_1, X_2 \ldots, X_n, X_{n+1}\}$ is said to be a Martingale if $\mathbf{E}\left(X_{n+1} \mid X_1, \ldots, X_n\right)=X_n$ ). 
+This analysis is reflective of the Efficient Market Hypothesis which states that that at any given time, asset prices fully reflect all historical information prior to that time. This implies Random Walk for asset prices -- stock prices follow a random walk, meaning that price changes are random and cannot be predicted with certainity based on historical data or other available information. Given the random walk behaviour the simplest thing to do would be to carry forward the last observation (this goes under the name of LOCF -- Last Observation Carried Forward. This is essentially the idea behind Martingale -- A stochastic process $\{X_1, X_2 \ldots, X_n, X_{n+1}\}$ is said to be a Martingale if $\mathbf{E}\left(X_{n+1} \mid X_1, \ldots, X_n\right)=X_n$ ). 
 
 This method of imputation is presented in the plot below
 
 ![alt text](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/HimanshuNotebooks/LOCF.png) 
 
-When compared with the true data, we find a mean squared error of 11.38 in case where we have seven windows of 5 consequetive missing values in each window. In the following we explore regression and time series models that have better performance. 
+When compared with the true data, we find a mean squared error of LOCF is 11.38 in case where we have seven windows of 5 consequetive missing values in each window. In the following we explore regression and time series models that have better performance. 
 
-## Models:
--Baseline model: Linear Interpolation
--k-Nearest Neighbour: Weighted 2-Nearest Neighbors Regression with the feature date. We want to generalize this idea by using more features, such as, open stock price and volume.
--Rolling average:  Uses the average of a fixed number of points to the left and right of the missing values to make a prediction
--Double Exponential Smoothing: A forecasting method that accounts for both the level and the trend in the data by applying exponential smoothing twice, once to the level and once to the trend.
--SARIMA: Incorporates seasonal patterns, trends, and autoregressive components. Can use both forward and backward forecasting for imputing missing data in the middle of the time series.
--Linear Regression between price movement of different companies' stocks
--Vector Auto Regression: A statistical model used to capture the linear interdependencies among multiple time series by allowing each variable to be a linear function of past values of itself and the past values of all other variables in the system. 
+## List of models that we tried:
+
+The main models that we tried were the following:
+
+- Baseline model: Linear Interpolation
+- k-Nearest Neighbour: Weighted 2-Nearest Neighbors Regression with date as a feature. We want to generalize this idea by using more features, such as, open stock price and volume.
+- Rolling average: Uses the average of a fixed number of points to the left and right of the missing values to make a prediction 
+- Double Exponential Smoothing: A forecasting method that accounts for both the level and the trend in the data by applying exponential smoothing twice, once to the level and once to the trend.
+- SARIMA: Incorporates seasonal patterns, trends, and autoregressive components. Can use both forward and backward forecasting for imputing missing data in the middle of the time series.
+- Linear Regression between price movement of different companies' stocks
+- Vector Auto Regression: A statistical model used to capture the linear interdependencies among multiple time series by allowing each variable to be a linear function of past values of itself and the past values of all other variables in the system.
 
 
-## Results:
+### Summary of implimentation
+
+- Linear Regression:
+We took linear interpolation as our baseline model. This model gives an MSE of 3.475 (for the case of 5 consecutive missing point) thereby outperforming LOCF. 
+
+- Rolling Average, Double Exponential Smoothing, and SARIMA:
+These methods make predictions based on the closing prices alone. They performed comparably to linear interpolation for a single missing point but worsened as the number of missing data points increased. The optimal performance occurs when predictions based on data to the left and right of the missing points are weighted equally. An illustration of these methods is given below 
+
+![alt text](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/PresentationAssets/methods_illustration.jpg)
+
+- Cross-Sectional Analysis:
+After examining cross-correlation between Apple stocks and other tech companies stocks time series, we observed that it might be reasonable to use the movement of the stock prices of other companies to impute the missing Apple stocks data. One such method of incorporating the stocks prices is by regressing daily returns of Apple stock on daily returns of other companies, and then using prediction of the daily returns for imputing missing values. With this method, it is observed that when the linear regression on the daily returns has a good fit, the predictions of the missing stock values have lower error.
+
+- Granger Causality:
+Idea of Granger Causality: If X GCs Y, we can use X to predict Y. For example, if we want to predict stock for Apple, and we find that Google stock Granger Causes Apple stock, using Google stock will improve Apple prediction. Therefore, we ran GC tests for 7 different companies: Apple, Google, Microsoft, NVIDIA, Amazon, Meta, TSMC. We found that the NVIDIA’s close difference Granger Causes Apple’s close difference, thus we include NVIDIA in our VAR model. 
+
+
+## Other advanced techniques
+
+We also implimented some advanced techniques that included:
+
+- Kalman Filtering: An algorithm used in time series analysis to estimate the state of a dynamic system from a series of noisy measurements. It operates recursively by updating it's estimates of the current state based on both the previous state and new measurements, accounting for uncertainties in both. The two main steps in the algorithm are prediction and update. In the prediction step it forecasts the next hidden state based on a linear model. In the update step it adjusts this prediction using the latest observed data.
+
+![alt text](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/HimanshuNotebooks/KalmanFilter.png)
+
+- Neural network:
+Using a multi-layered perceptron, we trained the model on the data with the data missing and tested it against the original full data set. We found that the small size of the training dataset led to overfitting of the model.
+
+![alt text]()
+
+
+## Final results:
 
 First we present the results of three methods that make predictions based on the `close` prices time series data alone. 
 
