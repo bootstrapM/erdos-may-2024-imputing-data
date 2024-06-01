@@ -4,7 +4,8 @@
 Imputing missing data in stock time series is crucial for maintaining data integrity, optimizing model performance, and ensuring the continuity necessary for accurate analysis. Missing values can lead to biased results, disrupt the sequential nature of financial data, and hinder effective risk management and historical accuracy. By filling in these gaps, one can achieve more reliable insights and make better-informed decisions, ultimately enhancing the utility and precision of financial models and strategies.
 
 
-## Motivation: The NYSE and NASDAQ average about 252 trading days yearly. What if someone accidentally deleted data from five (or more) trading days? Missing data is often ignored or removed when we analyze data, which could be problematic. One of the problems is that stock returns depend on that "missingness" (S. Bryzgalova, 2022).
+## Motivation: 
+The NYSE and NASDAQ average about 252 trading days yearly. What if someone accidentally deleted data from five (or more) trading days? Missing data is often ignored or removed when we analyze data, which could be problematic. One of the problems is that stock returns depend on that "missingness" (S. Bryzgalova, 2022).
 Stakeholders: AAPL Inc., investors, financial companies
 
 
