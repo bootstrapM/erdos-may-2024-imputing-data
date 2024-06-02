@@ -152,7 +152,7 @@ While it looks this algorithm perofrmed significantly worse than other technique
 
 Cleaned Jupyter Notebooks used for the results shown above can be found in this [folder](https://github.com/bootstrapM/erdos-may-2024-imputing-data/tree/main/Models). It consists of the following notebooks
 
-- [Using_closing_price_alone.ipynb](): This notebook compares the accuracy of rolling average, double exponential smoothing and ARIMA interpolation methods to that of the baseline (linear interpolation).
+- [RollingAverage_ExpSmoothing_ARIMA.ipynb](): This notebook compares the accuracy of rolling average, double exponential smoothing and ARIMA interpolation methods to that of the baseline (linear interpolation).
 - [Stationary_test.ipynb](): We need to check for stationary before applying the Granger Causality test.
 - [Granger_Causality_test.ipynb](): Apply Granger Causality Test. Companies that Granger Causes Apple’s close differencing will be implemented in VAR. 
 - [VAR.ipynb](): VAR model with the lag found from Granger Causality test.
