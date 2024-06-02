@@ -152,12 +152,14 @@ While it looks this algorithm perofrmed significantly worse than other technique
 
 Cleaned Jupyter Notebooks used for the results shown above can be found in this [folder](https://github.com/bootstrapM/erdos-may-2024-imputing-data/tree/main/Models). It consists of the following notebooks
 
-- [RollingAverage_ExpSmoothing_ARIMA.ipynb](): This notebook compares the accuracy of rolling average, double exponential smoothing and ARIMA interpolation methods to that of the baseline (linear interpolation).
+- [RollingAverage_ExpSmoothing_ARIMA.ipynb](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/Models/RollingAverage_ExpSmoothing_ARIMA.ipynb): This notebook compares the accuracy of rolling average, double exponential smoothing and ARIMA interpolation methods to that of the baseline (linear interpolation).
 - [Stationary_test.ipynb](): We need to check for stationary before applying the Granger Causality test.
 - [Granger_Causality_test.ipynb](): Apply Granger Causality Test. Companies that Granger Causes Apple’s close differencing will be implemented in VAR. 
-- [VAR.ipynb](): VAR model with the lag found from Granger Causality test.
+- [VAR.ipynb](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/Models/VAR.ipynb): VAR model with the lag found from Granger Causality test.
 - [regression_on_daily_return.ipynb](): Regression analysis of the daily return values of the other tech companies is used to predict Apple stock closing values.
+- [ForwardBackwardARIMA.ipynb](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/Models/ForwardBackwardARIMA.ipynb): 
 - [summary_of_models.ipynb](): Table with relative MSE data of all models
+- [KalmanFilter.ipynb](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/Models/KalmanFilter.ipynb): 
 
 The [folder]() contains figures pertaining to EDA. It consists of the following:
 
