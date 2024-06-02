@@ -74,7 +74,7 @@ The main models that we tried were the following (we also give a brief descripti
 
 ### Summary of implimentation
 
-- Linear Regression: We took linear interpolation as our baseline model. This model gives an MSE of 3.475 (for the case of 5 consecutive missing point) thereby outperforming LOCF. 
+- Baseline model: We took linear interpolation as our baseline model. This model gives an MSE of 3.475 (for the case of 5 consecutive missing point) thereby outperforming LOCF. 
 
 - Rolling Average, Double Exponential Smoothing, and SARIMA: These methods make predictions based on the closing prices alone. They performed comparably to linear interpolation for a single missing point but worsened as the number of missing data points increased. The optimal performance occurs when predictions based on data to the left and right of the missing points are weighted equally. An illustration of these methods is given below 
 
