@@ -150,23 +150,16 @@ While it looks this algorithm perofrmed significantly worse than other technique
 
 ## Code Description
 
-Notebooks contained various models used for the results shown above can be found in this [folder](https://github.com/bootstrapM/erdos-may-2024-imputing-data/tree/main/Models). The [folder](https://github.com/bootstrapM/erdos-may-2024-imputing-data/tree/main/ExploratoryAnalysis) contains figures pertaining to exploratory analysis of the data. The contents of the various notebooks is briefly described below:
+Notebooks containing various models used for the results shown above can be found in this [folder](https://github.com/bootstrapM/erdos-may-2024-imputing-data/tree/main/Models). The [ExploratoryAnalysis folder](https://github.com/bootstrapM/erdos-may-2024-imputing-data/tree/main/ExploratoryAnalysis) contains analysis and illustrations pertaining to exploratory analysis of the data and statistical tests. The contents of the various notebooks is briefly described below:
 
 - [KNN.ipynb](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/Models/KNN.ipynb): This notebook makes use of KNN (k=2) regression to predict the missing value with available features of the stock price dataset.
 - [RollingAverage_ExpSmoothing_ARIMA.ipynb](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/Models/RollingAverage_ExpSmoothing_ARIMA.ipynb): This notebook compares the accuracy of rolling average, double exponential smoothing and ARIMA interpolation methods to that of the baseline (linear interpolation).
 - [Stationary_test.ipynb](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/ExploratoryAnalysis/Stationary_test.ipynb): We need to check for stationary before applying the Granger Causality test.
-- [Granger_Causality_test.ipynb](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/ExploratoryAnalysis/Granger_Causality_test.ipynb): Apply Granger Causality Test. Companies that Granger Causes Apple’s close differencing will be implemented in VAR. 
-- [VAR.ipynb](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/Models/VAR.ipynb): VAR model with the lag found from Granger Causality test.
+- [Granger_Causality_test.ipynb](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/ExploratoryAnalysis/Granger_Causality_test.ipynb): This notebook implements Granger causality test. Companies that Granger Causes Apple’s close differencing will be used for fitting a time series model (such as Vector Auto Regression) . 
+- [VAR.ipynb](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/Models/VAR.ipynb): This notebooks impliments the Vector Auto Regression model with the lag found from Granger causality test.
 - [regression_on_daily_return.ipynb](): Regression analysis of the daily return values of the other tech companies is used to predict Apple stock closing values.
 - [ForwardBackwardARIMA.ipynb](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/Models/ForwardBackwardARIMA.ipynb): In this notebook we impliment an Arima(2, 1, 0) model in the forward and reverse directions. The average values of the forward and backward estimates are used for imputing missing data.
 - [eda_for_regression](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/ExploratoryAnalysis/eda_for_regression.ipynb): basic data analysis for choosing models and features for regression on other companies’ stock movement
 - [summary_of_models.ipynb](): Table with relative MSE data of all models
 - [KalmanFilter.ipynb](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/Models/KalmanFilter.ipynb): This file shown an attempt at time series imputation using the Kalman filtering technique. 
-
-
-
-
-
-
-
 
