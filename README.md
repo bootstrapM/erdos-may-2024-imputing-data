@@ -5,7 +5,7 @@ Imputing missing data in financial time series is crucial for maintaining data i
 
 
 ## Motivation: 
-Stock exchanges such as NYSE and NASDAQ average about 252 [trading days](https://en.wikipedia.org/wiki/Trading_day) a year (trading market remins closed on weekends and national holidays). Such markets have trading hours and non-trading hours nationally and internationally. Typically, trading begins at 9:30 AM and ends at 4:00 PM. The remaining hours is what we might call a period of missing data during which the `Close` price on the $i$'th day evolves to (usually different) `Open` price on $(i+1)$ 'th day as consequence of, for instance, developments in financial markets worldwide. Analyzing imputation for such time series could therefore yeild insight on correlations in international market and the relevent models and market predictors to use for the more practical problem of making forecast in price movements. Another situation of missing data that one could speculate is where an external shock (in the form of market news or geopolitical events) leads to huge jumps in the prices which might temporarily halt trading.
+Stock exchanges such as NYSE and NASDAQ average about 252 [trading days](https://en.wikipedia.org/wiki/Trading_day) a year (trading market remains closed on weekends and national holidays). Such markets have trading hours and non-trading hours nationally and internationally. Typically, trading begins at 9:30 AM and ends at 4:00 PM. The remaining hours is what we might call a period of missing data during which the `Close` price on the $i$'th day evolves to (usually different) `Open` price on $(i+1)$ 'th day as consequence of, for instance, developments in financial markets worldwide. Analyzing imputation for such time series could therefore yield insight on correlations in international market and the relevent models and market predictors to use for the more practical problem of making forecast in price movements. Another situation of missing data that one could speculate is where an external shock (in the form of market news or geopolitical events) leads to huge jumps in the prices which might temporarily halt trading.
 
 Though missing data in the daily stock prices is rare, in this project, we analyse a toy problem where we delete a few data points in the stock price time series by hand and attempt to impute it through various methods. The goal is to see which methods and what market indicators work best for such a dataset.
 
@@ -25,7 +25,7 @@ We also used 2023 data for `NVDA`, `MSFT`, `TSM`, `META`, `GOOG` stocks for perf
 ![alt text](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/HimanshuNotebooks/multiple_prices.png) 
 
 ## Exploratory Data Analysis
-He we give an exploratory data analysis of the `APPL` dataset. The plot below depicts the closing prices differences between consecutive trading days
+Here we give an exploratory data analysis of the `APPL` dataset. The plot below depicts the closing prices differences between consecutive trading days
 
 ![alt text](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/HimanshuNotebooks/PriceDifferences.png) 
 
@@ -54,7 +54,7 @@ The above method of imputation (LOCF) is presented in the plot below
 
 ![alt text](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/HimanshuNotebooks/LOCF.png) 
 
-When compared with the true data, we find a mean squared error of 11.38 (for the case where we have seven windows of 5 consequetive missing values in each window). 
+When compared with the true data, we find a mean squared error of 11.38 (for the case where we have seven windows of 5 consecutive missing values in each window). 
 
 In what follows we explore regression and time series models in search of other better performing frameworks.
 
@@ -68,7 +68,7 @@ The main models that we tried were the following (we also give a brief descripti
 - Double Exponential Smoothing: A forecasting method that accounts for both the level and the trend in the data by applying exponential smoothing twice, once to the level and once to the trend.
 - SARIMA: Incorporates seasonal patterns, trends, and autoregressive components. Can use both forward and backward forecasting for imputing missing data in the middle of the time series.
 - Linear Regression: Useful for regressing price movement of different companies' stocks that have a strong correlation. 
-- Granger Causality: This is a statistical hypothesis test used to determine whether one time series can predict another. In other words, if the past values of one time series `X` provide significant information about the future values of another variable `Y`  (beyond what is contained in the past values of `Y` alone), then `X` is said to <em>Granger-cause</em> `Y`. While this method is closely related to `cross-correlation`, is it more sophisticated since it provides a test for predictive causality, an information that can very useful for satatistical modeling. 
+- Granger Causality: This is a statistical hypothesis test used to determine whether one time series can predict another. In other words, if the past values of one time series `X` provide significant information about the future values of another variable `Y`  (beyond what is contained in the past values of `Y` alone), then `X` is said to <em>Granger-cause</em> `Y`. While this method is closely related to `cross-correlation`, it is more sophisticated since it provides a test for predictive causality, an information that can very useful for satatistical modeling. 
 - Vector Auto Regression: A statistical model used to capture the linear interdependencies among multiple time series by allowing each variable to be a linear function of past values of itself and the past values of all other variables in the system.
 
 
@@ -146,11 +146,11 @@ Kalman Filtering is an algorithm used in time series analysis to estimate the st
 
 ![alt text](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/HimanshuNotebooks/KalmanFilter.png)
 
-While it looks this algorithm perofrmed significantly worse than other techniques mentioned above we haven't explored the full potential of the method and leave a more treatment it to future work.
+While it looks this algorithm performed significantly worse than other techniques mentioned above we haven't explored the full potential of the method and leave a more treatment it to future work.
 
 ## Code Description
 
-Notebooks containing various models used for the results shown above can be found in this [folder](https://github.com/bootstrapM/erdos-may-2024-imputing-data/tree/main/Models). The [ExploratoryAnalysis folder](https://github.com/bootstrapM/erdos-may-2024-imputing-data/tree/main/ExploratoryAnalysis) contains analysis and illustrations pertaining to exploratory analysis of the data and statistical tests. The contents of the various notebooks is briefly described below:
+Notebooks containing various models used for the results shown above can be found in this [folder](https://github.com/bootstrapM/erdos-may-2024-imputing-data/tree/main/Models). The [ExploratoryAnalysis folder](https://github.com/bootstrapM/erdos-may-2024-imputing-data/tree/main/ExploratoryAnalysis) contains analysis and illustrations pertaining to exploratory analysis of the data and various statistical tests. The contents of the various notebooks is briefly described below:
 
 - [KNN.ipynb](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/Models/KNN.ipynb): This notebook makes use of KNN (k=2) regression to predict the missing value with available features of the stock price dataset.
 - [RollingAverage_ExpSmoothing_ARIMA.ipynb](https://github.com/bootstrapM/erdos-may-2024-imputing-data/blob/main/Models/RollingAverage_ExpSmoothing_ARIMA.ipynb): This notebook compares the accuracy of rolling average, double exponential smoothing and ARIMA interpolation methods to that of the baseline (linear interpolation).
